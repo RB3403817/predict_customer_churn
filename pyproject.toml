@@ -1,0 +1,25 @@
+[project]
+name = "predict-customer-churn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "catboost>=1.2.8",
+    "lightgbm>=4.6.0",
+    "llvmlite>=0.44.0",
+    "matplotlib>=3.10.5",
+    "numba>=0.61.2",
+    "numpy>=2.2.6",
+    "optuna>=4.5.0",
+    "pandas>=2.3.2",
+    "scikit-learn>=1.7.1",
+    "seaborn>=0.13.2",
+    "shap>=0.48.0",
+    "xgboost>=3.0.4",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]
