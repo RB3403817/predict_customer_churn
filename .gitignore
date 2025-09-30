@@ -214,3 +214,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project specific
+catboost_info/
+*.pkl
+*.joblib
+models/
+plots/
