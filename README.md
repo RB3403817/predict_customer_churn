@@ -3,11 +3,25 @@
 This project provides an end-to-end solution for predicting customer churn using the Telco Customer Churn dataset. It leverages state-of-the-art boosting algorithms (XGBoost, LightGBM, CatBoost, AdaBoost) and includes data preprocessing, feature engineering, model tuning, evaluation, and explainability.
 
 ## Project Structure
-- `churn_boosting_notebook.ipynb`: Main notebook with all steps from data loading to model explainability.
-- `main.py`: (Optional) Script for running the pipeline.
-- `data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv`: Raw dataset (add this file before running).
-- `catboost_info/`: CatBoost training logs and artifacts.
-- `pyproject.toml`, `uv.lock`: Dependency management files.
+
+```
+predict_customer_churn/
+├── src/
+│   └── predict_customer_churn/
+│       ├── __init__.py           # Package initialization
+│       ├── config.py              # Configuration and constants
+│       ├── data.py                # Data loading and preprocessing
+│       ├── preprocessing.py       # Feature preprocessing pipelines
+│       ├── models.py              # Model training and tuning
+│       └── evaluation.py          # Model evaluation and visualization
+├── data/
+│   └── raw/
+│       └── WA_Fn-UseC_-Telco-Customer-Churn.csv  # Raw dataset
+├── churn_boosting_notebook.ipynb # Original notebook (for reference)
+├── main.py                        # Main script to run the pipeline
+├── pyproject.toml                 # Project dependencies
+└── README.md                      # This file
+```
 
 ## Steps Covered
 1. **Data Collection & Loading**: Loads the Telco Customer Churn dataset.
@@ -26,18 +40,45 @@ This project provides an end-to-end solution for predicting customer churn using
 - SHAP analysis highlights the most important features driving churn predictions.
 
 ## How to Run
-1. Place the dataset CSV in `data/raw/`.
-2. Open `churn_boosting_notebook.ipynb` and run cells sequentially.
-3. (Optional) Use `main.py` for a script-based workflow.
+
+### Using the Script (Recommended)
+```bash
+python main.py
+```
+
+This will:
+1. Load the customer churn dataset
+2. Preprocess and engineer features
+3. Train baseline models (XGBoost, LightGBM, CatBoost, AdaBoost)
+4. Display performance metrics
+
+### Using the Notebook
+1. Open `churn_boosting_notebook.ipynb`
+2. Run cells sequentially for interactive exploration
+
+### Hyperparameter Tuning
+To enable hyperparameter tuning with Optuna, uncomment the tuning section in `main.py` or use the functions in `src/predict_customer_churn/models.py`.
 
 ## Requirements
 - Python 3.8+
-- pandas, numpy, scikit-learn, xgboost, lightgbm, catboost, optuna, shap, matplotlib
-- Use `uv` or pip to install dependencies (see `pyproject.toml` or `requirements.txt` if available).
+- pandas, numpy, scikit-learn, xgboost, lightgbm, catboost, optuna, matplotlib
+
+Install dependencies:
+```bash
+pip install pandas numpy scikit-learn xgboost lightgbm catboost optuna matplotlib
+```
+
+Or use the project dependencies:
+```bash
+pip install -e .
+```
 
 ## Notes
-- The notebook is modular: you can run only the steps you need.
-- SHAP plots may be slow for large datasets; sampling is used for speed.
+- The codebase has been refactored into modular Python packages for better maintainability
+- The notebook is still available for reference and interactive exploration
+- Use `main.py` for production-like pipeline execution
+- Model artifacts are automatically excluded from version control (see `.gitignore`)
+- SHAP plots may be slow for large datasets; sampling is used for speed (see notebook)
 
 ## License
 MIT License
